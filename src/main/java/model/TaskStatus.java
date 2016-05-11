@@ -1,14 +1,27 @@
 package model;
 
-/**
- * Created by Anon-PC on 08.05.2016.
- */
 public enum TaskStatus {
 
-    BACKLOG,
-    TODO,
-    PROGRESS,
-    WAITING,
-    DONE;
+    BACKLOG("Backlog"),
+    TODO("ToDo"),
+    PROGRESS("Progress"),
+    WAITING("Waiting"),
+    DONE("Done");
 
+    private String name;
+
+    TaskStatus(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return "TaskStatus{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

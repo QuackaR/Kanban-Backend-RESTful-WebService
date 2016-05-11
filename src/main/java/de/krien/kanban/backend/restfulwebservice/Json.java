@@ -24,7 +24,6 @@ public class Json {
         List<Task> tasks = generateTestTasks();
 
         System.out.println("WS was called!");
-        System.out.println("List: " + tasks);
 
         Task[] returnArray = tasks.toArray(new Task[tasks.size()]);
 
@@ -39,21 +38,20 @@ public class Json {
     }
 
     private List<Task> generateTestTasks() {
-        Task newTask = new Task();
-        newTask.setName("TestTask");
-        newTask.setDescription("This is a task to test the json conversion");
-        newTask.setDueDate(new Date());
-        newTask.setStatus(TaskStatus.BACKLOG);
+        List<Task> tasks = new ArrayList<>();
 
-        Task newTask2 = new Task();
-        newTask2.setName("TestTask2");
-        newTask2.setDescription("This is a second task to test the json conversion");
-        newTask2.setDueDate(new Date());
-        newTask2.setStatus(TaskStatus.TODO);
-
-        List<Task> tasks = new ArrayList<Task>();
-        tasks.add(newTask);
-        tasks.add(newTask2);
+        for(TaskStatus status : TaskStatus.values()) {
+            int count = 1;
+            for(int i = 0; i < 5; i++) {
+                Task newTask = new Task();
+                newTask.setId(count);
+                newTask.setName("Test Task " + count++);
+                newTask.setDescription("This is a task to test the kanban board application");
+                newTask.setDueDate(new Date());
+                newTask.setStatus(status.getName());
+                tasks.add(newTask);
+            }
+        }
         return tasks;
     }
 
